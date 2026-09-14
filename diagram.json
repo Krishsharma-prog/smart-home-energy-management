@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "author": "Team Diamond",
+  "editor": "wokwi",
+  "parts": [
+    {"type":"wokwi-esp32-devkit-v1","id":"esp","top":20,"left":20,"attrs":{}},
+    {"type":"wokwi-dht22","id":"dht","top":20,"left":330,"attrs":{"temperature":"28","humidity":"60"}},
+    {"type":"wokwi-pir-motion-sensor","id":"pir","top":180,"left":330,"attrs":{"delayTime":"1"}},
+    {"type":"wokwi-potentiometer","id":"pot","top":310,"left":330,"attrs":{}},
+    {"type":"wokwi-resistor","id":"rDht","top":115,"left":510,"attrs":{"value":"10k"}},
+    {"type":"wokwi-led","id":"ac","top":105,"left":650,"attrs":{"color":"red","label":"AC"}},
+    {"type":"wokwi-resistor","id":"rAc","top":105,"left":570,"attrs":{"value":"220"}},
+    {"type":"wokwi-led","id":"heater","top":205,"left":650,"attrs":{"color":"blue","label":"Water Heater"}},
+    {"type":"wokwi-resistor","id":"rHeater","top":205,"left":570,"attrs":{"value":"220"}},
+    {"type":"wokwi-led","id":"washer","top":305,"left":650,"attrs":{"color":"green","label":"Washing Machine"}},
+    {"type":"wokwi-resistor","id":"rWasher","top":305,"left":570,"attrs":{"value":"220"}}
+  ],
+  "connections": [
+    ["esp:3V3","dht:VCC","red",[]], ["esp:GND.1","dht:GND","black",[]], ["esp:D4","dht:SDA","green",[]], ["dht:SDA","rDht:1","green",[]], ["rDht:2","esp:3V3","red",[]],
+    ["esp:3V3","pir:VCC","red",[]], ["esp:GND.2","pir:GND","black",[]], ["esp:D13","pir:OUT","green",[]],
+    ["esp:3V3","pot:VCC","red",[]], ["esp:GND.3","pot:GND","black",[]], ["esp:D34","pot:SIG","green",[]],
+    ["esp:D25","rAc:1","green",[]], ["rAc:2","ac:A","green",[]], ["ac:C","esp:GND.1","black",[]],
+    ["esp:D26","rHeater:1","green",[]], ["rHeater:2","heater:A","green",[]], ["heater:C","esp:GND.2","black",[]],
+    ["esp:D33","rWasher:1","green",[]], ["rWasher:2","washer:A","green",[]], ["washer:C","esp:GND.3","black",[]]
+  ],
+  "serialMonitor": {"display":"always","newline":"lf"}
+}
